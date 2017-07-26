@@ -22277,25 +22277,21 @@ var ReactDOM = __webpack_require__(97);
 var ListDemo = function (_React$Component) {
     _inherits(ListDemo, _React$Component);
 
-    function ListDemo(args) {
+    function ListDemo() {
         _classCallCheck(this, ListDemo);
 
-        var _this = _possibleConstructorReturn(this, (ListDemo.__proto__ || Object.getPrototypeOf(ListDemo)).call(this, args));
-
-        _this.state = {};
-        return _this;
+        return _possibleConstructorReturn(this, (ListDemo.__proto__ || Object.getPrototypeOf(ListDemo)).apply(this, arguments));
     }
 
     _createClass(ListDemo, [{
-        key: 'componentDidMount',
-        value: function componentDidMount() {}
-    }, {
         key: 'render',
         value: function render() {
             var dataSource = [{
                 username: '李高锋'
             }, {
                 username: '赵希'
+            }, {
+                username: '李丹妮'
             }];
             return React.createElement(
                 'div',
@@ -22306,9 +22302,18 @@ var ListDemo = function (_React$Component) {
                         return React.createElement(
                             'div',
                             null,
-                            index,
-                            ' - ',
-                            item.username
+                            React.createElement(
+                                'p',
+                                null,
+                                '\u5E8F\u53F7\uFF1A',
+                                index
+                            ),
+                            React.createElement(
+                                'p',
+                                null,
+                                '\u59D3\u540D\uFF1A',
+                                item.username
+                            )
                         );
                     } })
             );
