@@ -4,7 +4,7 @@ require('./list.scss');
 class List extends React.Component {
     constructor(args) {
         super(args);
-        console.log(this.props.dataSource)
+        console.warn(this.props.dataSource)
     }
 
     getList() {
