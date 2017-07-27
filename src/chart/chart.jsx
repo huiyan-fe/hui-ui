@@ -1,4 +1,5 @@
 import Chart from '../../lib/chart/chart.jsx';
+// import Chart from 'hui-ui/lib/chart/chart.jsx';
 
 const React = require('react');
 const ReactDOM = require('react-dom');

@@ -1,4 +1,5 @@
 import List from '../../lib/list/list.jsx';
+// import List from 'hui-ui/lib/list/list.jsx';
 
 const React = require('react');
 const ReactDOM = require('react-dom');
