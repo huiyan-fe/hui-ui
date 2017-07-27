@@ -22358,7 +22358,7 @@ exports = module.exports = __webpack_require__(186)(undefined);
 
 
 // module
-exports.push([module.i, ".hui-list,\n.hui-list li {\n  list-style: none;\n  list-style-image: none;\n  margin: 0;\n  padding: 0; }\n\n.hui-list li {\n  padding: 10px;\n  border-bottom: 1px solid #f4f4f4;\n  color: #666; }\n  .hui-list li:hover {\n    background: #f4f4f4;\n    cursor: pointer; }\n", ""]);
+exports.push([module.i, ".hui-list,\n.hui-list li {\n  list-style: none;\n  list-style-image: none;\n  margin: 0;\n  padding: 0; }\n\n.hui-list li {\n  border-bottom: 1px solid #eaeaea;\n  color: #666; }\n  .hui-list li:hover {\n    background: #f4f4f4;\n    cursor: pointer; }\n", ""]);
 
 // exports
 
