@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    <script>
+        hljs.initHighlightingOnLoad({
+            useBR: true
+        });
+    </script>
+    <style>
+        .hljs {
+            display: block;
+            overflow-x: auto;
+            padding: 0.5em;
+            color: #abb2bf;
+            background: #282c34;
+            font-size: 16px;
+        }
+        
+        .hljs-comment,
+        .hljs-quote {
+            color: #5c6370;
+            font-style: italic;
+        }
+        
+        .hljs-doctag,
+        .hljs-keyword,
+        .hljs-formula {
+            color: #c678dd;
+        }
+        
+        .hljs-section,
+        .hljs-name,
+        .hljs-selector-tag,
+        .hljs-deletion,
+        .hljs-subst {
+            color: #e06c75;
+        }
+        
+        .hljs-literal {
+            color: #56b6c2;
+        }
+        
+        .hljs-string,
+        .hljs-regexp,
+        .hljs-addition,
+        .hljs-attribute,
+        .hljs-meta-string {
+            color: #98c379;
+        }
+        
+        .hljs-built_in,
+        .hljs-class .hljs-title {
+            color: #e6c07b;
+        }
+        
+        .hljs-attr,
+        .hljs-variable,
+        .hljs-template-variable,
+        .hljs-type,
+        .hljs-selector-class,
+        .hljs-selector-attr,
+        .hljs-selector-pseudo,
+        .hljs-number {
+            color: #d19a66;
+        }
+        
+        .hljs-symbol,
+        .hljs-bullet,
+        .hljs-link,
+        .hljs-meta,
+        .hljs-selector-id,
+        .hljs-title {
+            color: #61aeee;
+        }
+        
+        .hljs-emphasis {
+            font-style: italic;
+        }
+        
+        .hljs-strong {
+            font-weight: bold;
+        }
+        
+        .hljs-link {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="content" id="content"></div>
+    <pre>
+        <code class="javascript" id="code"></code>
+    </pre>
+    <script src="../../src/static/echarts.min.js"></script>
+    <script src="../../dist/chart/chart.js"></script>
+    <script>
+        let xmlhttp = new XMLHttpRequest();
+        xmlhttp.onreadystatechange = state_Change;
+        xmlhttp.open("GET", '../../src/chart/chart.jsx', true);
+        xmlhttp.send(null);
+
+        function state_Change() {
+            if (xmlhttp.readyState == 4) { // 4 = "loaded"
+                if (xmlhttp.status == 200) { // 200 = OK
+                    let code = document.getElementById('code');
+                    code.innerText = xmlhttp.responseText;
+                    console.log('dome', xmlhttp)
+                    hljs.highlightBlock(code);
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>

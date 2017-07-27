@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "dist/demo";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 189);
+/******/ 	return __webpack_require__(__webpack_require__.s = 190);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -22251,119 +22251,9 @@ module.exports = ReactDOMInvalidARIAHook;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 183 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _react = __webpack_require__(81);
-
-var _react2 = _interopRequireDefault(_react);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-__webpack_require__(184);
-
-var List = function (_React$Component) {
-    _inherits(List, _React$Component);
-
-    function List(args) {
-        _classCallCheck(this, List);
-
-        var _this = _possibleConstructorReturn(this, (List.__proto__ || Object.getPrototypeOf(List)).call(this, args));
-
-        console.warn(_this.props.dataSource);
-        return _this;
-    }
-
-    _createClass(List, [{
-        key: 'getList',
-        value: function getList() {
-            var dataSource = this.props.dataSource;
-            var render = this.props.render;
-            return dataSource.map(function (item, index) {
-                return _react2.default.createElement(
-                    'li',
-                    { key: index },
-                    render(item, index)
-                );
-            });
-        }
-    }, {
-        key: 'render',
-        value: function render() {
-            return _react2.default.createElement(
-                'ul',
-                { className: 'hui-list' },
-                this.getList()
-            );
-        }
-    }]);
-
-    return List;
-}(_react2.default.Component);
-
-exports.default = List;
-
-/***/ }),
-/* 184 */
-/***/ (function(module, exports, __webpack_require__) {
-
-// style-loader: Adds some css to the DOM by adding a <style> tag
-
-// load the styles
-var content = __webpack_require__(185);
-if(typeof content === 'string') content = [[module.i, content, '']];
-// Prepare cssTransformation
-var transform;
-
-var options = {}
-options.transform = transform
-// add the styles to the DOM
-var update = __webpack_require__(187)(content, options);
-if(content.locals) module.exports = content.locals;
-// Hot Module Replacement
-if(false) {
-	// When the styles change, update the <style> tags
-	if(!content.locals) {
-		module.hot.accept("!!../../node_modules/css-loader/index.js!../../node_modules/sass-loader/lib/loader.js!./list.scss", function() {
-			var newContent = require("!!../../node_modules/css-loader/index.js!../../node_modules/sass-loader/lib/loader.js!./list.scss");
-			if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-			update(newContent);
-		});
-	}
-	// When the module is disposed, remove the <style> tags
-	module.hot.dispose(function() { update(); });
-}
-
-/***/ }),
-/* 185 */
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(186)(undefined);
-// imports
-
-
-// module
-exports.push([module.i, ".hui-list,\n.hui-list li {\n  list-style: none;\n  list-style-image: none;\n  margin: 0;\n  padding: 0; }\n\n.hui-list li {\n  padding: 10px;\n  border-bottom: 1px solid #f4f4f4;\n  color: #666; }\n  .hui-list li:hover {\n    background: #f4f4f4;\n    cursor: pointer; }\n", ""]);
-
-// exports
-
-
-/***/ }),
+/* 183 */,
+/* 184 */,
+/* 185 */,
 /* 186 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -22854,7 +22744,8 @@ module.exports = function (css) {
 };
 
 /***/ }),
-/* 189 */
+/* 189 */,
+/* 190 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -22862,9 +22753,9 @@ module.exports = function (css) {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _list = __webpack_require__(183);
+var _chart = __webpack_require__(192);
 
-var _list2 = _interopRequireDefault(_list);
+var _chart2 = _interopRequireDefault(_chart);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -22877,56 +22768,269 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 var React = __webpack_require__(81);
 var ReactDOM = __webpack_require__(97);
 
-var ListDemo = function (_React$Component) {
-    _inherits(ListDemo, _React$Component);
+var ChartDemo = function (_React$Component) {
+    _inherits(ChartDemo, _React$Component);
 
-    function ListDemo() {
-        _classCallCheck(this, ListDemo);
+    function ChartDemo() {
+        _classCallCheck(this, ChartDemo);
 
-        return _possibleConstructorReturn(this, (ListDemo.__proto__ || Object.getPrototypeOf(ListDemo)).apply(this, arguments));
+        return _possibleConstructorReturn(this, (ChartDemo.__proto__ || Object.getPrototypeOf(ChartDemo)).apply(this, arguments));
     }
 
-    _createClass(ListDemo, [{
+    _createClass(ChartDemo, [{
         key: 'render',
         value: function render() {
             var dataSource = [{
-                username: '李高锋'
+                name: 'card1',
+                xAxis: ['周一', '周二', '周三', '周四', '周五', '周六', '周日'],
+                series: [{
+                    name: '最低气温',
+                    type: 'line',
+                    data: [1, -2, 2, 5, 3, 2, 0]
+                }]
             }, {
-                username: '赵希'
+                name: 'card2',
+                xAxis: ['1', '2', '3', '4', '5', '6', '7'],
+                series: [{
+                    name: '最高气温',
+                    type: 'line',
+                    data: [11, 11, 15, 13, 12, 13, 10]
+                }]
             }, {
-                username: '李丹妮'
+                name: 'card3',
+                xAxis: ['a', 'b', 'c', 'd', 'e', 'f', 'g'],
+                series: [{
+                    name: '最低气温',
+                    type: 'line',
+                    data: [1, -2, 2, 5, 3, 2, 0]
+                }]
             }];
             return React.createElement(
                 'div',
                 null,
-                React.createElement(_list2.default, {
-                    dataSource: dataSource,
-                    render: function render(item, index) {
-                        return React.createElement(
-                            'div',
-                            null,
-                            React.createElement(
-                                'p',
-                                null,
-                                '\u5E8F\u53F7\uFF1A',
-                                index
-                            ),
-                            React.createElement(
-                                'p',
-                                null,
-                                '\u59D3\u540D\uFF1A',
-                                item.username
-                            )
-                        );
-                    } })
+                React.createElement(_chart2.default, { dataSource: dataSource })
             );
         }
     }]);
 
-    return ListDemo;
+    return ChartDemo;
 }(React.Component);
 
-ReactDOM.render(React.createElement(ListDemo, null), document.getElementById('content'));
+ReactDOM.render(React.createElement(ChartDemo, null), document.getElementById('content'));
+
+/***/ }),
+/* 191 */,
+/* 192 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(81);
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+__webpack_require__(193);
+
+var List = function (_React$Component) {
+    _inherits(List, _React$Component);
+
+    function List(args) {
+        _classCallCheck(this, List);
+
+        var _this = _possibleConstructorReturn(this, (List.__proto__ || Object.getPrototypeOf(List)).call(this, args));
+
+        _this.option = {
+            tooltip: {
+                trigger: 'axis'
+            },
+            xAxis: {
+                type: 'category',
+                boundaryGap: false,
+                data: []
+            },
+            yAxis: {
+                type: 'value',
+                axisLabel: {
+                    formatter: '{value}'
+                }
+            },
+            series: []
+        };
+
+        _this.state = {
+            activeIndex: 0,
+            isHide: false
+        };
+        return _this;
+    }
+
+    _createClass(List, [{
+        key: 'componentDidMount',
+        value: function componentDidMount() {
+            this.charts = echarts.init(this.refs.chart);
+            var option = {
+                tooltip: {
+                    trigger: 'axis'
+                },
+                xAxis: {
+                    type: 'category',
+                    boundaryGap: false,
+                    data: []
+                },
+                yAxis: {
+                    type: 'value',
+                    axisLabel: {
+                        formatter: '{value}'
+                    }
+                },
+                series: []
+            };
+
+            this.showChart();
+        }
+    }, {
+        key: 'showChart',
+        value: function showChart() {
+            var data = this.props.dataSource[this.state.activeIndex];
+            this.option.xAxis.data = data.xAxis;
+            this.option.series = data.series;
+            this.charts.clear();
+            this.charts.setOption(this.option);
+        }
+    }, {
+        key: 'getTitleBtn',
+        value: function getTitleBtn() {
+            var _this2 = this;
+
+            var data = this.props.dataSource;
+            return data.map(function (item, index) {
+                return _react2.default.createElement(
+                    'span',
+                    {
+                        onClick: _this2.changeTab.bind(_this2, index),
+                        className: 'hui-chart-btn ' + (index === _this2.state.activeIndex ? 'active' : ''),
+                        key: 'title_' + index },
+                    item.name
+                );
+            });
+        }
+    }, {
+        key: 'changeTab',
+        value: function changeTab(index) {
+            this.setState({
+                activeIndex: index
+            });
+        }
+    }, {
+        key: 'componentDidUpdate',
+        value: function componentDidUpdate() {
+            this.showChart();
+        }
+    }, {
+        key: 'close',
+        value: function close() {
+            this.setState({
+                isHide: true
+            });
+        }
+    }, {
+        key: 'render',
+        value: function render() {
+            return _react2.default.createElement(
+                'div',
+                {
+                    className: 'hui-chart',
+                    style: {
+                        display: this.state.isHide ? 'none' : ''
+                    }
+                },
+                _react2.default.createElement(
+                    'div',
+                    { className: 'hui-chart-title' },
+                    this.getTitleBtn(),
+                    _react2.default.createElement(
+                        'svg',
+                        {
+                            className: 'hui-chart-close', width: '30', height: '30', viewBox: '0 0 1024 1024',
+                            onClick: this.close.bind(this) },
+                        _react2.default.createElement('path', { d: 'M557.312 513.248l265.28-263.904c12.544-12.48 12.608-32.704 0.128-45.248-12.512-12.576-32.704-12.608-45.248-0.128l-265.344 263.936-263.04-263.84C236.64 191.584 216.384 191.52 203.84 204 191.328 216.48 191.296 236.736 203.776 249.28l262.976 263.776L201.6 776.8c-12.544 12.48-12.608 32.704-0.128 45.248 6.24 6.272 14.464 9.44 22.688 9.44 8.16 0 16.32-3.104 22.56-9.312l265.216-263.808 265.44 266.24c6.24 6.272 14.432 9.408 22.656 9.408 8.192 0 16.352-3.136 22.592-9.344 12.512-12.48 12.544-32.704 0.064-45.248L557.312 513.248z' })
+                    )
+                ),
+                _react2.default.createElement(
+                    'div',
+                    { className: 'hui-chart-chart', ref: 'chart', style: {
+                            height: (this.props.height || 290) - 30 + 'px'
+                        } },
+                    'x'
+                )
+            );
+        }
+    }]);
+
+    return List;
+}(_react2.default.Component);
+
+exports.default = List;
+
+/***/ }),
+/* 193 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(194);
+if(typeof content === 'string') content = [[module.i, content, '']];
+// Prepare cssTransformation
+var transform;
+
+var options = {}
+options.transform = transform
+// add the styles to the DOM
+var update = __webpack_require__(187)(content, options);
+if(content.locals) module.exports = content.locals;
+// Hot Module Replacement
+if(false) {
+	// When the styles change, update the <style> tags
+	if(!content.locals) {
+		module.hot.accept("!!../../node_modules/css-loader/index.js!../../node_modules/sass-loader/lib/loader.js!./chart.scss", function() {
+			var newContent = require("!!../../node_modules/css-loader/index.js!../../node_modules/sass-loader/lib/loader.js!./chart.scss");
+			if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+			update(newContent);
+		});
+	}
+	// When the module is disposed, remove the <style> tags
+	module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 194 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(186)(undefined);
+// imports
+
+
+// module
+exports.push([module.i, ".hui-chart {\n  border: 1px solid #597694; }\n  .hui-chart .hui-chart-title {\n    height: 30px;\n    line-height: 30px;\n    color: #333;\n    background-color: #f6f8f8;\n    border-bottom: 1px solid #edf1f2; }\n  .hui-chart .hui-chart-btn {\n    background: white;\n    cursor: pointer;\n    padding: 0 20px;\n    text-align: center;\n    border-top: 0;\n    border-bottom: 0;\n    height: 100%;\n    line-height: 30px;\n    float: left;\n    font-size: 12px;\n    border-right: 1px solid #e0e0e0; }\n    .hui-chart .hui-chart-btn.active {\n      background: #404c5a;\n      color: white; }\n  .hui-chart .hui-chart-close {\n    float: right;\n    height: 20px;\n    line-height: 30px;\n    fill: #666;\n    padding: 5px 0px;\n    cursor: pointer;\n    color: #666; }\n    .hui-chart .hui-chart-close:hover {\n      fill: #fff;\n      background: #404c5a; }\n", ""]);
+
+// exports
+
 
 /***/ })
 /******/ ]);

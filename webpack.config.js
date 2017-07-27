@@ -9,6 +9,7 @@ console.log(env);
 module.exports = {
     entry: {
         'list/list': './src/list/list.jsx',
+        'chart/chart': './src/chart/chart.jsx',
         vendor: ['react', 'react-dom']
     },
     output: {

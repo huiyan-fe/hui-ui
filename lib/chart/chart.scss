@@ -1,0 +1,40 @@
+.hui-chart {
+    border: 1px solid #597694;
+    .hui-chart-title {
+        height: 30px;
+        line-height: 30px;
+        color: #333;
+        background-color: #f6f8f8;
+        border-bottom: 1px solid #edf1f2;
+    }
+    .hui-chart-btn {
+        background: white;
+        cursor: pointer;
+        padding: 0 20px;
+        text-align: center;
+        border-top: 0;
+        border-bottom: 0;
+        height: 100%;
+        line-height: 30px;
+        float: left;
+        font-size: 12px;
+        border-right: 1px solid #e0e0e0;
+        &.active {
+            background: #404c5a;
+            color: white;
+        }
+    }
+    .hui-chart-close {
+        float: right;
+        height: 20px;
+        line-height: 30px;
+        fill: #666;
+        padding: 5px 0px;
+        cursor: pointer;
+        color: #666;
+        &:hover {
+            fill: #fff;
+            background: #404c5a;
+        }
+    }
+}
