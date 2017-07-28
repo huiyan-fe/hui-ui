@@ -22848,13 +22848,13 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 __webpack_require__(193);
 
-var List = function (_React$Component) {
-    _inherits(List, _React$Component);
+var Chart = function (_React$Component) {
+    _inherits(Chart, _React$Component);
 
-    function List(args) {
-        _classCallCheck(this, List);
+    function Chart(args) {
+        _classCallCheck(this, Chart);
 
-        var _this = _possibleConstructorReturn(this, (List.__proto__ || Object.getPrototypeOf(List)).call(this, args));
+        var _this = _possibleConstructorReturn(this, (Chart.__proto__ || Object.getPrototypeOf(Chart)).call(this, args));
 
         _this.option = {
             tooltip: {
@@ -22878,13 +22878,14 @@ var List = function (_React$Component) {
             activeIndex: 0,
             isHide: false
         };
+        _this.doms = {};
         return _this;
     }
 
-    _createClass(List, [{
+    _createClass(Chart, [{
         key: 'componentDidMount',
         value: function componentDidMount() {
-            this.charts = echarts.init(this.refs.chart);
+            this.charts = echarts.init(this.doms.chart);
             var option = {
                 tooltip: {
                     trigger: 'axis'
@@ -22953,6 +22954,8 @@ var List = function (_React$Component) {
     }, {
         key: 'render',
         value: function render() {
+            var _this3 = this;
+
             return _react2.default.createElement(
                 'div',
                 {
@@ -22975,7 +22978,12 @@ var List = function (_React$Component) {
                 ),
                 _react2.default.createElement(
                     'div',
-                    { className: 'hui-chart-chart', ref: 'chart', style: {
+                    {
+                        className: 'hui-chart-chart',
+                        ref: function ref(e) {
+                            _this3.doms.chart = e;
+                        },
+                        style: {
                             height: (this.props.height || 290) - 30 + 'px'
                         } },
                     'x'
@@ -22984,10 +22992,10 @@ var List = function (_React$Component) {
         }
     }]);
 
-    return List;
+    return Chart;
 }(_react2.default.Component);
 
-exports.default = List;
+exports.default = Chart;
 
 /***/ }),
 /* 193 */
