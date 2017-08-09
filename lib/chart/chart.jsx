@@ -23,6 +23,53 @@ class Chart extends React.Component {
             series: []
         }
 
+        if (this.props.theme === 'radio') {
+            this.option = {
+                title: {
+                    text: '',
+                    textStyle: {
+                        color: '#999',
+                        fontSize: 12,
+                    },
+                    padding: [0, 0, 0, 0]
+                },
+                tooltip: {
+                    trigger: 'axis'
+                },
+                grid: {
+                    top: '20px',
+                    left: '40px',
+                    right: '40px',
+                    bottom: '20px',
+                    containLabel: true,
+                    show: false
+                },
+                xAxis: {
+                    type: 'category',
+                    boundaryGap: true,
+                    axisLine: {
+                        lineStyle: {
+                        }
+                    },
+                    data: []
+                },
+                yAxis: {
+                    type: 'value',
+                    axisLine: {
+                        lineStyle: {
+                            color: '#222'
+                        }
+                    },
+                    splitLine: {
+                        lineStyle: {
+                            color: '#ccc'
+                        }
+                    }
+                },
+                series: []
+            }
+        };
+
         this.state = {
             activeIndex: 0,
             isHide: false
@@ -32,24 +79,6 @@ class Chart extends React.Component {
 
     componentDidMount() {
         this.charts = echarts.init(this.doms.chart);
-        let option = {
-            tooltip: {
-                trigger: 'axis'
-            },
-            xAxis: {
-                type: 'category',
-                boundaryGap: false,
-                data: []
-            },
-            yAxis: {
-                type: 'value',
-                axisLabel: {
-                    formatter: '{value}'
-                }
-            },
-            series: []
-        }
-
         this.showChart();
     }
 
@@ -57,6 +86,24 @@ class Chart extends React.Component {
         let data = this.props.dataSource[this.state.activeIndex];
         this.option.xAxis.data = data.xAxis;
         this.option.series = data.series;
+        if (this.props.theme === 'radio') {
+            this.option.series[0].itemStyle = {
+                normal: {
+                    color: '#5c89e7'
+                }
+            };
+            this.option.series[0].areaStyle = {
+                normal: {
+                    color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+                        offset: 0,
+                        color: '#69acf9'
+                    }, {
+                        offset: 1,
+                        color: '#fff'
+                    }])
+                }
+            };
+        }
         this.charts.clear();
         this.charts.setOption(this.option);
     }

@@ -44,9 +44,12 @@
         .hui-chart-title {
             background: none;
             border-bottom: 1px solid #cacaca;
+            height: 40px;
+            line-height: 40px;
         }
         .hui-chart-btn {
             background: #ebeff6;
+            line-height: 40px;
             color: #666;
             border-bottom: 1px solid #cacaca;
             &.active {

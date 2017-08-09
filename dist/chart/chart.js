@@ -22873,6 +22873,52 @@ var Chart = function (_React$Component) {
             series: []
         };
 
+        if (_this.props.theme === 'radio') {
+            _this.option = {
+                title: {
+                    text: '',
+                    textStyle: {
+                        color: '#999',
+                        fontSize: 12
+                    },
+                    padding: [0, 0, 0, 0]
+                },
+                tooltip: {
+                    trigger: 'axis'
+                },
+                grid: {
+                    top: '20px',
+                    left: '40px',
+                    right: '40px',
+                    bottom: '20px',
+                    containLabel: true,
+                    show: false
+                },
+                xAxis: {
+                    type: 'category',
+                    boundaryGap: true,
+                    axisLine: {
+                        lineStyle: {}
+                    },
+                    data: []
+                },
+                yAxis: {
+                    type: 'value',
+                    axisLine: {
+                        lineStyle: {
+                            color: '#222'
+                        }
+                    },
+                    splitLine: {
+                        lineStyle: {
+                            color: '#ccc'
+                        }
+                    }
+                },
+                series: []
+            };
+        };
+
         _this.state = {
             activeIndex: 0,
             isHide: false
@@ -22885,24 +22931,6 @@ var Chart = function (_React$Component) {
         key: 'componentDidMount',
         value: function componentDidMount() {
             this.charts = echarts.init(this.doms.chart);
-            var option = {
-                tooltip: {
-                    trigger: 'axis'
-                },
-                xAxis: {
-                    type: 'category',
-                    boundaryGap: false,
-                    data: []
-                },
-                yAxis: {
-                    type: 'value',
-                    axisLabel: {
-                        formatter: '{value}'
-                    }
-                },
-                series: []
-            };
-
             this.showChart();
         }
     }, {
@@ -22911,6 +22939,24 @@ var Chart = function (_React$Component) {
             var data = this.props.dataSource[this.state.activeIndex];
             this.option.xAxis.data = data.xAxis;
             this.option.series = data.series;
+            if (this.props.theme === 'radio') {
+                this.option.series[0].itemStyle = {
+                    normal: {
+                        color: '#5c89e7'
+                    }
+                };
+                this.option.series[0].areaStyle = {
+                    normal: {
+                        color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+                            offset: 0,
+                            color: '#69acf9'
+                        }, {
+                            offset: 1,
+                            color: '#fff'
+                        }])
+                    }
+                };
+            }
             this.charts.clear();
             this.charts.setOption(this.option);
         }
@@ -23037,7 +23083,7 @@ exports = module.exports = __webpack_require__(183)(undefined);
 
 
 // module
-exports.push([module.i, ".hui-chart {\n  border: 1px solid #597694;\n  background: #fff; }\n  .hui-chart .hui-chart-title {\n    height: 30px;\n    line-height: 30px;\n    color: #333;\n    background-color: #f6f8f8;\n    border-bottom: 1px solid #edf1f2; }\n  .hui-chart .hui-chart-btn {\n    background: white;\n    cursor: pointer;\n    padding: 0 20px;\n    text-align: center;\n    border-top: 0;\n    border-bottom: 0;\n    height: 100%;\n    line-height: 30px;\n    float: left;\n    font-size: 12px;\n    border-right: 1px solid #e0e0e0; }\n    .hui-chart .hui-chart-btn.active {\n      background: #404c5a;\n      color: white; }\n  .hui-chart .hui-chart-close {\n    float: right;\n    height: 20px;\n    line-height: 30px;\n    fill: #666;\n    padding: 5px 0px;\n    cursor: pointer;\n    color: #666; }\n    .hui-chart .hui-chart-close:hover {\n      fill: #fff;\n      background: #404c5a; }\n  .hui-chart.theme-radio {\n    border: 1px solid #cacaca; }\n    .hui-chart.theme-radio .hui-chart-title {\n      background: none;\n      border-bottom: 1px solid #cacaca; }\n    .hui-chart.theme-radio .hui-chart-btn {\n      background: #ebeff6;\n      color: #666;\n      border-bottom: 1px solid #cacaca; }\n      .hui-chart.theme-radio .hui-chart-btn.active {\n        background: #fff;\n        color: #333;\n        border-bottom-color: #fff; }\n", ""]);
+exports.push([module.i, ".hui-chart {\n  border: 1px solid #597694;\n  background: #fff; }\n  .hui-chart .hui-chart-title {\n    height: 30px;\n    line-height: 30px;\n    color: #333;\n    background-color: #f6f8f8;\n    border-bottom: 1px solid #edf1f2; }\n  .hui-chart .hui-chart-btn {\n    background: white;\n    cursor: pointer;\n    padding: 0 20px;\n    text-align: center;\n    border-top: 0;\n    border-bottom: 0;\n    height: 100%;\n    line-height: 30px;\n    float: left;\n    font-size: 12px;\n    border-right: 1px solid #e0e0e0; }\n    .hui-chart .hui-chart-btn.active {\n      background: #404c5a;\n      color: white; }\n  .hui-chart .hui-chart-close {\n    float: right;\n    height: 20px;\n    line-height: 30px;\n    fill: #666;\n    padding: 5px 0px;\n    cursor: pointer;\n    color: #666; }\n    .hui-chart .hui-chart-close:hover {\n      fill: #fff;\n      background: #404c5a; }\n  .hui-chart.theme-radio {\n    border: 1px solid #cacaca; }\n    .hui-chart.theme-radio .hui-chart-title {\n      background: none;\n      border-bottom: 1px solid #cacaca;\n      height: 40px;\n      line-height: 40px; }\n    .hui-chart.theme-radio .hui-chart-btn {\n      background: #ebeff6;\n      line-height: 40px;\n      color: #666;\n      border-bottom: 1px solid #cacaca; }\n      .hui-chart.theme-radio .hui-chart-btn.active {\n        background: #fff;\n        color: #333;\n        border-bottom-color: #fff; }\n", ""]);
 
 // exports
 
