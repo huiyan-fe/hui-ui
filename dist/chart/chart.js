@@ -22251,10 +22251,7 @@ module.exports = ReactDOMInvalidARIAHook;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 183 */,
-/* 184 */,
-/* 185 */,
-/* 186 */
+/* 183 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -22336,7 +22333,7 @@ function toComment(sourceMap) {
 }
 
 /***/ }),
-/* 187 */
+/* 184 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /*
@@ -22373,7 +22370,7 @@ var stylesInDom = {},
 	singletonElement = null,
 	singletonCounter = 0,
 	styleElementsInsertedAtTop = [],
-	fixUrls = __webpack_require__(188);
+	fixUrls = __webpack_require__(185);
 
 module.exports = function(list, options) {
 	if(typeof DEBUG !== "undefined" && DEBUG) {
@@ -22649,7 +22646,7 @@ function updateLink(linkElement, options, obj) {
 
 
 /***/ }),
-/* 188 */
+/* 185 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -22744,6 +22741,9 @@ module.exports = function (css) {
 };
 
 /***/ }),
+/* 186 */,
+/* 187 */,
+/* 188 */,
 /* 189 */,
 /* 190 */
 /***/ (function(module, exports, __webpack_require__) {
@@ -22753,7 +22753,7 @@ module.exports = function (css) {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _chart = __webpack_require__(192);
+var _chart = __webpack_require__(191);
 
 var _chart2 = _interopRequireDefault(_chart);
 
@@ -22821,8 +22821,7 @@ var ChartDemo = function (_React$Component) {
 ReactDOM.render(React.createElement(ChartDemo, null), document.getElementById('content'));
 
 /***/ }),
-/* 191 */,
-/* 192 */
+/* 191 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -22846,7 +22845,7 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-__webpack_require__(193);
+__webpack_require__(192);
 
 var Chart = function (_React$Component) {
     _inherits(Chart, _React$Component);
@@ -22968,7 +22967,7 @@ var Chart = function (_React$Component) {
                     'div',
                     { className: 'hui-chart-title' },
                     this.getTitleBtn(),
-                    _react2.default.createElement(
+                    this.props.hideCloseBtn === false ? null : _react2.default.createElement(
                         'svg',
                         {
                             className: 'hui-chart-close', width: '30', height: '30', viewBox: '0 0 1024 1024',
@@ -22998,13 +22997,13 @@ var Chart = function (_React$Component) {
 exports.default = Chart;
 
 /***/ }),
-/* 193 */
+/* 192 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(194);
+var content = __webpack_require__(193);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -23012,7 +23011,7 @@ var transform;
 var options = {}
 options.transform = transform
 // add the styles to the DOM
-var update = __webpack_require__(187)(content, options);
+var update = __webpack_require__(184)(content, options);
 if(content.locals) module.exports = content.locals;
 // Hot Module Replacement
 if(false) {
@@ -23029,10 +23028,10 @@ if(false) {
 }
 
 /***/ }),
-/* 194 */
+/* 193 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(186)(undefined);
+exports = module.exports = __webpack_require__(183)(undefined);
 // imports
 
 
