@@ -90,16 +90,17 @@ class Chart extends React.Component {
     }
 
     render() {
+        var theme = this.props.theme || 'default';
         return (
             <div
-                className="hui-chart"
+                className={"hui-chart" + ' theme-' + theme}
                 style={{
                     display: this.state.isHide ? 'none' : ''
                 }}
             >
                 <div className="hui-chart-title">
                     {this.getTitleBtn()}
-                    {this.props.hideCloseBtn === false ? null :
+                    {this.props.hideCloseBtn === true ? null :
                     <svg
                         className="hui-chart-close" width="30" height="30" viewBox="0 0 1024 1024"
                         onClick={this.close.bind(this)}>

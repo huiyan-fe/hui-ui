@@ -41,7 +41,7 @@ class ChartDemo extends React.Component {
         ];
         return (
             <div>
-                <Chart dataSource={dataSource} />
+                <Chart dataSource={dataSource} theme="radio"/>
             </div>
         );
     }

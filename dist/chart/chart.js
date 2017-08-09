@@ -22810,7 +22810,7 @@ var ChartDemo = function (_React$Component) {
             return React.createElement(
                 'div',
                 null,
-                React.createElement(_chart2.default, { dataSource: dataSource })
+                React.createElement(_chart2.default, { dataSource: dataSource, theme: 'radio' })
             );
         }
     }]);
@@ -22955,10 +22955,11 @@ var Chart = function (_React$Component) {
         value: function render() {
             var _this3 = this;
 
+            var theme = this.props.theme || 'default';
             return _react2.default.createElement(
                 'div',
                 {
-                    className: 'hui-chart',
+                    className: "hui-chart" + ' theme-' + theme,
                     style: {
                         display: this.state.isHide ? 'none' : ''
                     }
@@ -22967,7 +22968,7 @@ var Chart = function (_React$Component) {
                     'div',
                     { className: 'hui-chart-title' },
                     this.getTitleBtn(),
-                    this.props.hideCloseBtn === false ? null : _react2.default.createElement(
+                    this.props.hideCloseBtn === true ? null : _react2.default.createElement(
                         'svg',
                         {
                             className: 'hui-chart-close', width: '30', height: '30', viewBox: '0 0 1024 1024',
@@ -23036,7 +23037,7 @@ exports = module.exports = __webpack_require__(183)(undefined);
 
 
 // module
-exports.push([module.i, ".hui-chart {\n  border: 1px solid #597694; }\n  .hui-chart .hui-chart-title {\n    height: 30px;\n    line-height: 30px;\n    color: #333;\n    background-color: #f6f8f8;\n    border-bottom: 1px solid #edf1f2; }\n  .hui-chart .hui-chart-btn {\n    background: white;\n    cursor: pointer;\n    padding: 0 20px;\n    text-align: center;\n    border-top: 0;\n    border-bottom: 0;\n    height: 100%;\n    line-height: 30px;\n    float: left;\n    font-size: 12px;\n    border-right: 1px solid #e0e0e0; }\n    .hui-chart .hui-chart-btn.active {\n      background: #404c5a;\n      color: white; }\n  .hui-chart .hui-chart-close {\n    float: right;\n    height: 20px;\n    line-height: 30px;\n    fill: #666;\n    padding: 5px 0px;\n    cursor: pointer;\n    color: #666; }\n    .hui-chart .hui-chart-close:hover {\n      fill: #fff;\n      background: #404c5a; }\n", ""]);
+exports.push([module.i, ".hui-chart {\n  border: 1px solid #597694;\n  background: #fff; }\n  .hui-chart .hui-chart-title {\n    height: 30px;\n    line-height: 30px;\n    color: #333;\n    background-color: #f6f8f8;\n    border-bottom: 1px solid #edf1f2; }\n  .hui-chart .hui-chart-btn {\n    background: white;\n    cursor: pointer;\n    padding: 0 20px;\n    text-align: center;\n    border-top: 0;\n    border-bottom: 0;\n    height: 100%;\n    line-height: 30px;\n    float: left;\n    font-size: 12px;\n    border-right: 1px solid #e0e0e0; }\n    .hui-chart .hui-chart-btn.active {\n      background: #404c5a;\n      color: white; }\n  .hui-chart .hui-chart-close {\n    float: right;\n    height: 20px;\n    line-height: 30px;\n    fill: #666;\n    padding: 5px 0px;\n    cursor: pointer;\n    color: #666; }\n    .hui-chart .hui-chart-close:hover {\n      fill: #fff;\n      background: #404c5a; }\n  .hui-chart.theme-radio {\n    border: 1px solid #cacaca; }\n    .hui-chart.theme-radio .hui-chart-title {\n      background: none;\n      border-bottom: 1px solid #cacaca; }\n    .hui-chart.theme-radio .hui-chart-btn {\n      background: #ebeff6;\n      color: #666;\n      border-bottom: 1px solid #cacaca; }\n      .hui-chart.theme-radio .hui-chart-btn.active {\n        background: #fff;\n        color: #333;\n        border-bottom-color: #fff; }\n", ""]);
 
 // exports
 

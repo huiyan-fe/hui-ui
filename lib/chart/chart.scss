@@ -1,5 +1,6 @@
 .hui-chart {
     border: 1px solid #597694;
+    background: #fff;
     .hui-chart-title {
         height: 30px;
         line-height: 30px;
@@ -35,6 +36,24 @@
         &:hover {
             fill: #fff;
             background: #404c5a;
+        }
+    }
+
+    &.theme-radio {
+        border: 1px solid #cacaca;
+        .hui-chart-title {
+            background: none;
+            border-bottom: 1px solid #cacaca;
+        }
+        .hui-chart-btn {
+            background: #ebeff6;
+            color: #666;
+            border-bottom: 1px solid #cacaca;
+            &.active {
+                background: #fff;
+                color: #333;
+                border-bottom-color: #fff;
+            }
         }
     }
 }
