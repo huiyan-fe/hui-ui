@@ -22810,7 +22810,7 @@ var ChartDemo = function (_React$Component) {
             return React.createElement(
                 'div',
                 null,
-                React.createElement(_chart2.default, { dataSource: dataSource, theme: 'radio' })
+                React.createElement(_chart2.default, { isShowFold: true, hideCloseBtn: false, dataSource: dataSource, theme: 'radio' })
             );
         }
     }]);
@@ -22945,7 +22945,7 @@ var Chart = function (_React$Component2) {
 
         _this2.state = {
             activeIndex: 0,
-            isFold: false,
+            isFold: !!_this2.props.isFold,
             isHide: false
         };
         _this2.doms = {};
@@ -22957,6 +22957,15 @@ var Chart = function (_React$Component2) {
         value: function componentDidMount() {
             this.charts = echarts.init(this.doms.chart);
             this.showChart();
+        }
+    }, {
+        key: 'componentWillReceiveProps',
+        value: function componentWillReceiveProps(nextProps) {
+            if (this.props.isFold !== nextProps.isFold) {
+                this.setState({
+                    isFold: nextProps.isFold
+                });
+            }
         }
     }, {
         key: 'showChart',
@@ -23024,9 +23033,11 @@ var Chart = function (_React$Component2) {
     }, {
         key: 'handleToggleFold',
         value: function handleToggleFold() {
+            var isFold = !this.state.isFold;
             this.setState({
-                isFold: !this.state.isFold
+                isFold: isFold
             });
+            this.props.onFoldChange && this.props.onFoldChange(isFold);
         }
     }, {
         key: 'render',

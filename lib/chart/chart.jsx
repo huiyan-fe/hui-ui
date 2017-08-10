@@ -80,7 +80,7 @@ class Chart extends React.Component {
 
         this.state = {
             activeIndex: 0,
-            isFold: false,
+            isFold: !!this.props.isFold,
             isHide: false
         }
         this.doms = {};
@@ -89,6 +89,14 @@ class Chart extends React.Component {
     componentDidMount() {
         this.charts = echarts.init(this.doms.chart);
         this.showChart();
+    }
+
+    componentWillReceiveProps(nextProps) {
+        if (this.props.isFold !== nextProps.isFold) {
+            this.setState({
+                isFold: nextProps.isFold
+            });
+        }
     }
 
     showChart() {
@@ -146,9 +154,11 @@ class Chart extends React.Component {
     }
 
     handleToggleFold() {
+        var isFold = !this.state.isFold;
         this.setState({
-            isFold: !this.state.isFold
+            isFold: isFold
         });
+        this.props.onFoldChange && this.props.onFoldChange(isFold);
     }
 
     render() {
