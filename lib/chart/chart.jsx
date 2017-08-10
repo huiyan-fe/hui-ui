@@ -1,6 +1,14 @@
 import React from 'react';
 require('./chart.scss');
 
+class UnfoldIcon extends React.Component {
+    render() {
+        return (<svg viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" width="200" height="200"><defs></defs>
+            <path d="M81.953 717.824c12.288 12.288 31.328 13.024 43.008 2.016l369.984-369.952c15.072-15.872 19.008-15.808 34.817 0l369.952 369.952c11.68 11.039 30.72 10.272 43.008-2.016 12.512-12.512 13.216-32.032 1.6-43.68l-410.944-410.944c-5.056-5.056-11.648-7.328-18.464-7.744h-5.152c-6.816 0.448-13.408 2.72-18.464 7.744l-410.944 410.944c-11.585 11.648-10.88 31.2 1.6 43.68z"></path>
+        </svg>);
+    }
+}
+
 class Chart extends React.Component {
     constructor(args) {
         super(args);
@@ -72,6 +80,7 @@ class Chart extends React.Component {
 
         this.state = {
             activeIndex: 0,
+            isFold: false,
             isHide: false
         }
         this.doms = {};
@@ -136,15 +145,32 @@ class Chart extends React.Component {
         })
     }
 
+    handleToggleFold() {
+        this.setState({
+            isFold: !this.state.isFold
+        });
+    }
+
     render() {
         var theme = this.props.theme || 'default';
+
+        let openButton = null;
+        if (this.props.isShowFold === true) {
+            openButton = (<div className="hui-chart-panel-unfold"
+                title={(this.state.isFold ? '展开' : '收起') + "面板"}
+                    onClick={this.handleToggleFold.bind(this)}>
+                    <UnfoldIcon/>
+            </div>);
+        }
+
         return (
             <div
-                className={"hui-chart" + ' theme-' + theme}
+                className={"hui-chart" + ' theme-' + theme + ' ' + (this.state.isFold ? 'fold' : '')}
                 style={{
                     display: this.state.isHide ? 'none' : ''
                 }}
             >
+                {openButton}
                 <div className="hui-chart-title">
                     {this.getTitleBtn()}
                     {this.props.hideCloseBtn === true ? null :

@@ -22847,15 +22847,39 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 __webpack_require__(192);
 
-var Chart = function (_React$Component) {
-    _inherits(Chart, _React$Component);
+var UnfoldIcon = function (_React$Component) {
+    _inherits(UnfoldIcon, _React$Component);
+
+    function UnfoldIcon() {
+        _classCallCheck(this, UnfoldIcon);
+
+        return _possibleConstructorReturn(this, (UnfoldIcon.__proto__ || Object.getPrototypeOf(UnfoldIcon)).apply(this, arguments));
+    }
+
+    _createClass(UnfoldIcon, [{
+        key: 'render',
+        value: function render() {
+            return _react2.default.createElement(
+                'svg',
+                { viewBox: '0 0 1024 1024', version: '1.1', xmlns: 'http://www.w3.org/2000/svg', width: '200', height: '200' },
+                _react2.default.createElement('defs', null),
+                _react2.default.createElement('path', { d: 'M81.953 717.824c12.288 12.288 31.328 13.024 43.008 2.016l369.984-369.952c15.072-15.872 19.008-15.808 34.817 0l369.952 369.952c11.68 11.039 30.72 10.272 43.008-2.016 12.512-12.512 13.216-32.032 1.6-43.68l-410.944-410.944c-5.056-5.056-11.648-7.328-18.464-7.744h-5.152c-6.816 0.448-13.408 2.72-18.464 7.744l-410.944 410.944c-11.585 11.648-10.88 31.2 1.6 43.68z' })
+            );
+        }
+    }]);
+
+    return UnfoldIcon;
+}(_react2.default.Component);
+
+var Chart = function (_React$Component2) {
+    _inherits(Chart, _React$Component2);
 
     function Chart(args) {
         _classCallCheck(this, Chart);
 
-        var _this = _possibleConstructorReturn(this, (Chart.__proto__ || Object.getPrototypeOf(Chart)).call(this, args));
+        var _this2 = _possibleConstructorReturn(this, (Chart.__proto__ || Object.getPrototypeOf(Chart)).call(this, args));
 
-        _this.option = {
+        _this2.option = {
             tooltip: {
                 trigger: 'axis'
             },
@@ -22873,8 +22897,8 @@ var Chart = function (_React$Component) {
             series: []
         };
 
-        if (_this.props.theme === 'radio') {
-            _this.option = {
+        if (_this2.props.theme === 'radio') {
+            _this2.option = {
                 title: {
                     text: '',
                     textStyle: {
@@ -22919,12 +22943,13 @@ var Chart = function (_React$Component) {
             };
         };
 
-        _this.state = {
+        _this2.state = {
             activeIndex: 0,
+            isFold: false,
             isHide: false
         };
-        _this.doms = {};
-        return _this;
+        _this2.doms = {};
+        return _this2;
     }
 
     _createClass(Chart, [{
@@ -22963,15 +22988,15 @@ var Chart = function (_React$Component) {
     }, {
         key: 'getTitleBtn',
         value: function getTitleBtn() {
-            var _this2 = this;
+            var _this3 = this;
 
             var data = this.props.dataSource;
             return data.map(function (item, index) {
                 return _react2.default.createElement(
                     'span',
                     {
-                        onClick: _this2.changeTab.bind(_this2, index),
-                        className: 'hui-chart-btn ' + (index === _this2.state.activeIndex ? 'active' : ''),
+                        onClick: _this3.changeTab.bind(_this3, index),
+                        className: 'hui-chart-btn ' + (index === _this3.state.activeIndex ? 'active' : ''),
                         key: 'title_' + index },
                     item.name
                 );
@@ -22997,19 +23022,39 @@ var Chart = function (_React$Component) {
             });
         }
     }, {
+        key: 'handleToggleFold',
+        value: function handleToggleFold() {
+            this.setState({
+                isFold: !this.state.isFold
+            });
+        }
+    }, {
         key: 'render',
         value: function render() {
-            var _this3 = this;
+            var _this4 = this;
 
             var theme = this.props.theme || 'default';
+
+            var openButton = null;
+            if (this.props.isShowFold === true) {
+                openButton = _react2.default.createElement(
+                    'div',
+                    { className: 'hui-chart-panel-unfold',
+                        title: (this.state.isFold ? '展开' : '收起') + "面板",
+                        onClick: this.handleToggleFold.bind(this) },
+                    _react2.default.createElement(UnfoldIcon, null)
+                );
+            }
+
             return _react2.default.createElement(
                 'div',
                 {
-                    className: "hui-chart" + ' theme-' + theme,
+                    className: "hui-chart" + ' theme-' + theme + ' ' + (this.state.isFold ? 'fold' : ''),
                     style: {
                         display: this.state.isHide ? 'none' : ''
                     }
                 },
+                openButton,
                 _react2.default.createElement(
                     'div',
                     { className: 'hui-chart-title' },
@@ -23027,7 +23072,7 @@ var Chart = function (_React$Component) {
                     {
                         className: 'hui-chart-chart',
                         ref: function ref(e) {
-                            _this3.doms.chart = e;
+                            _this4.doms.chart = e;
                         },
                         style: {
                             height: (this.props.height || 290) - 30 + 'px'
@@ -23083,7 +23128,7 @@ exports = module.exports = __webpack_require__(183)(undefined);
 
 
 // module
-exports.push([module.i, ".hui-chart {\n  border: 1px solid #597694;\n  background: #fff; }\n  .hui-chart .hui-chart-title {\n    height: 30px;\n    line-height: 30px;\n    color: #333;\n    background-color: #f6f8f8;\n    border-bottom: 1px solid #edf1f2; }\n  .hui-chart .hui-chart-btn {\n    background: white;\n    cursor: pointer;\n    padding: 0 20px;\n    text-align: center;\n    border-top: 0;\n    border-bottom: 0;\n    height: 100%;\n    line-height: 30px;\n    float: left;\n    font-size: 12px;\n    border-right: 1px solid #e0e0e0; }\n    .hui-chart .hui-chart-btn.active {\n      background: #404c5a;\n      color: white; }\n  .hui-chart .hui-chart-close {\n    float: right;\n    height: 20px;\n    line-height: 30px;\n    fill: #666;\n    padding: 5px 0px;\n    cursor: pointer;\n    color: #666; }\n    .hui-chart .hui-chart-close:hover {\n      fill: #fff;\n      background: #404c5a; }\n  .hui-chart.theme-radio {\n    border: 1px solid #cacaca; }\n    .hui-chart.theme-radio .hui-chart-title {\n      background: none;\n      border-bottom: 1px solid #cacaca;\n      height: 40px;\n      line-height: 40px; }\n    .hui-chart.theme-radio .hui-chart-btn {\n      background: #ebeff6;\n      line-height: 40px;\n      color: #666;\n      border-bottom: 1px solid #cacaca; }\n      .hui-chart.theme-radio .hui-chart-btn.active {\n        background: #fff;\n        color: #333;\n        border-bottom-color: #fff; }\n", ""]);
+exports.push([module.i, ".hui-chart {\n  border: 1px solid #597694;\n  background: #fff;\n  position: relative; }\n  .hui-chart .hui-chart-title {\n    height: 30px;\n    line-height: 30px;\n    color: #333;\n    background-color: #f6f8f8;\n    border-bottom: 1px solid #edf1f2; }\n  .hui-chart .hui-chart-panel-unfold {\n    position: absolute;\n    top: -22px;\n    left: 50%;\n    margin-left: -30px;\n    width: 60px;\n    height: 20px;\n    background-color: #fff;\n    border: solid 1px #e8e8e8;\n    cursor: pointer;\n    background-color: rgba(255, 255, 255, 0.9);\n    text-align: center; }\n    .hui-chart .hui-chart-panel-unfold svg {\n      height: 20px;\n      width: 100%;\n      transform: rotate(180deg); }\n  .hui-chart.fold .hui-chart-panel-unfold svg {\n    transform: rotate(0deg); }\n  .hui-chart .hui-chart-btn {\n    background: white;\n    cursor: pointer;\n    padding: 0 20px;\n    text-align: center;\n    border-top: 0;\n    border-bottom: 0;\n    height: 100%;\n    line-height: 30px;\n    float: left;\n    font-size: 12px;\n    border-right: 1px solid #e0e0e0; }\n    .hui-chart .hui-chart-btn.active {\n      background: #404c5a;\n      color: white; }\n  .hui-chart .hui-chart-close {\n    float: right;\n    height: 20px;\n    line-height: 30px;\n    fill: #666;\n    padding: 5px 0px;\n    cursor: pointer;\n    color: #666; }\n    .hui-chart .hui-chart-close:hover {\n      fill: #fff;\n      background: #404c5a; }\n  .hui-chart.theme-radio {\n    border: 1px solid #cacaca; }\n    .hui-chart.theme-radio .hui-chart-title {\n      background: none;\n      border-bottom: 1px solid #cacaca;\n      height: 40px;\n      line-height: 40px; }\n    .hui-chart.theme-radio .hui-chart-btn {\n      background: #ebeff6;\n      line-height: 40px;\n      color: #666;\n      border-bottom: 1px solid #cacaca; }\n      .hui-chart.theme-radio .hui-chart-btn.active {\n        background: #fff;\n        color: #333;\n        border-bottom-color: #fff; }\n", ""]);
 
 // exports
 
