@@ -86,6 +86,8 @@ class Chart extends React.Component {
     close() {
         this.setState({
             isHide: true
+        }, () => {
+            this.props.close && this.props.close();
         })
     }
 
