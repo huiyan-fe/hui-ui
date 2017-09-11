@@ -22741,74 +22741,7 @@ module.exports = function (css) {
 };
 
 /***/ }),
-/* 186 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _react = __webpack_require__(81);
-
-var _react2 = _interopRequireDefault(_react);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-__webpack_require__(187);
-
-var List = function (_React$Component) {
-    _inherits(List, _React$Component);
-
-    function List(args) {
-        _classCallCheck(this, List);
-
-        var _this = _possibleConstructorReturn(this, (List.__proto__ || Object.getPrototypeOf(List)).call(this, args));
-
-        console.warn(_this.props.dataSource);
-        return _this;
-    }
-
-    _createClass(List, [{
-        key: 'getList',
-        value: function getList() {
-            var dataSource = this.props.dataSource;
-            var render = this.props.render;
-            return dataSource.map(function (item, index) {
-                return _react2.default.createElement(
-                    'li',
-                    { key: index },
-                    render(item, index)
-                );
-            });
-        }
-    }, {
-        key: 'render',
-        value: function render() {
-            return _react2.default.createElement(
-                'ul',
-                { className: 'hui-list' },
-                this.getList()
-            );
-        }
-    }]);
-
-    return List;
-}(_react2.default.Component);
-
-exports.default = List;
-
-/***/ }),
+/* 186 */,
 /* 187 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -22863,9 +22796,17 @@ exports.push([module.i, ".hui-list,\n.hui-list li {\n  list-style: none;\n  list
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _list = __webpack_require__(186);
+var _listTable = __webpack_require__(196);
 
-var _list2 = _interopRequireDefault(_list);
+var _listTable2 = _interopRequireDefault(_listTable);
+
+var _react = __webpack_require__(81);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactDom = __webpack_require__(97);
+
+var _reactDom2 = _interopRequireDefault(_reactDom);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -22874,11 +22815,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-// import List from 'hui-ui/lib/list/list.jsx';
-
-var React = __webpack_require__(81);
-var ReactDOM = __webpack_require__(97);
+// import List from 'hui-ui/lib/list/list-table.jsx';
 
 var ListDemo = function (_React$Component) {
     _inherits(ListDemo, _React$Component);
@@ -22892,44 +22829,178 @@ var ListDemo = function (_React$Component) {
     _createClass(ListDemo, [{
         key: 'render',
         value: function render() {
-            var dataSource = [{
-                username: '李高锋'
-            }, {
-                username: '赵希'
-            }, {
-                username: '李丹妮'
-            }];
-            return React.createElement(
-                'div',
-                null,
-                React.createElement(_list2.default, {
-                    dataSource: dataSource,
-                    render: function render(item, index) {
-                        return React.createElement(
-                            'div',
-                            null,
-                            React.createElement(
-                                'p',
-                                null,
-                                '\u5E8F\u53F7\uFF1A',
-                                index
-                            ),
-                            React.createElement(
-                                'p',
-                                null,
-                                '\u59D3\u540D\uFF1A',
-                                item.username
-                            )
-                        );
-                    } })
-            );
+            var dataSource = {
+                head: {
+                    data: [// head的每个字段，可以是String或者Object或者ReactElement
+                    '我是String', _react2.default.createElement(
+                        'span',
+                        null,
+                        '\u6211\u662FReactElement'
+                    ), {
+                        style: {
+                            width: '80px'
+                        },
+                        content: '我是Object'
+                    }, '迁入城市'],
+                    style: { // head tr 样式
+                        borderBottom: '1px solid #ccc',
+                        textAlign: 'left',
+                        height: '40px'
+                    }
+                },
+                body: {
+                    data: [// body每行的每个字段
+                    [1, '北京', '???', '上海'], [2, '西安', _react2.default.createElement('img', { width: '200px', src: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1505719905&di=11cc5dc9ca495b511138389f8ecedc5a&imgtype=jpg&er=1&src=http%3A%2F%2Fimgsrc.baidu.com%2Fimgad%2Fpic%2Fitem%2Ff9198618367adab4f1eb675d81d4b31c8701e4f1.jpg' }), '上海']],
+                    style: { // body tr 的样式
+                        height: '40px',
+                        borderBottom: '1px solid #ddd'
+                    }
+                },
+                style: { // table的样式
+                    background: '#f4f4f4'
+                }
+            };
+            return _react2.default.createElement(_listTable2.default, { dataSource: dataSource });
         }
     }]);
 
     return ListDemo;
-}(React.Component);
+}(_react2.default.Component);
 
-ReactDOM.render(React.createElement(ListDemo, null), document.getElementById('content'));
+_reactDom2.default.render(_react2.default.createElement(ListDemo, null), document.getElementById('content'));
+
+/***/ }),
+/* 191 */,
+/* 192 */,
+/* 193 */,
+/* 194 */,
+/* 195 */,
+/* 196 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(81);
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+__webpack_require__(187);
+// yzc
+
+var List = function (_React$Component) {
+    _inherits(List, _React$Component);
+
+    function List(args) {
+        _classCallCheck(this, List);
+
+        return _possibleConstructorReturn(this, (List.__proto__ || Object.getPrototypeOf(List)).call(this, args));
+    }
+
+    _createClass(List, [{
+        key: 'getTdContent',
+        value: function getTdContent(td, isTh) {
+            var tdDom = td;
+            var style = {};
+
+            if ((typeof td === 'undefined' ? 'undefined' : _typeof(td)) === 'object' && !_react2.default.isValidElement(td)) {
+                tdDom = tdDom.content || '';
+                style = td.style || {};
+            }
+
+            if (isTh) {
+                return _react2.default.createElement(
+                    'th',
+                    { key: 'th_' + Math.random(), style: style },
+                    tdDom
+                );
+            } else {
+                return _react2.default.createElement(
+                    'td',
+                    { key: 'td_' + Math.random(), style: style },
+                    tdDom
+                );
+            }
+        }
+    }, {
+        key: 'getTableHead',
+        value: function getTableHead() {
+            var _this2 = this;
+
+            var HeadData = this.props.dataSource && this.props.dataSource.head && this.props.dataSource.head.data || [];
+            var HeadStyle = this.props.dataSource && this.props.dataSource.head && this.props.dataSource.head.style || {};
+            var ths = HeadData.map(function (item) {
+                return _this2.getTdContent(item, true);
+            });
+            return _react2.default.createElement(
+                'tr',
+                { style: HeadStyle, key: 'tableHead' },
+                ths
+            );
+        }
+    }, {
+        key: 'getTableList',
+        value: function getTableList() {
+            var _this3 = this;
+
+            var BodyData = this.props.dataSource && this.props.dataSource.body && this.props.dataSource.body.data || [];
+            var BodyStyle = this.props.dataSource && this.props.dataSource.body && this.props.dataSource.body.style || [];
+            return BodyData.map(function (trs, trindex) {
+                var tds = trs.map(function (td) {
+                    return _this3.getTdContent(td);
+                });
+                return _react2.default.createElement(
+                    'tr',
+                    { style: BodyStyle, key: 'tableBody' + trindex },
+                    tds
+                );
+            });
+        }
+    }, {
+        key: 'render',
+        value: function render() {
+            var tableStyle = this.props.dataSource.style || {};
+            var defaultStyle = { width: '100%', borderCollapse: 'collapse' };
+            Object.keys(tableStyle).forEach(function (key) {
+                defaultStyle[key] = tableStyle[key];
+            });
+            return _react2.default.createElement(
+                'table',
+                { style: defaultStyle },
+                _react2.default.createElement(
+                    'thead',
+                    null,
+                    this.getTableHead()
+                ),
+                _react2.default.createElement(
+                    'tbody',
+                    null,
+                    this.getTableList()
+                )
+            );
+        }
+    }]);
+
+    return List;
+}(_react2.default.Component);
+
+exports.default = List;
 
 /***/ })
 /******/ ]);
