@@ -22971,6 +22971,10 @@ var Chart = function (_React$Component2) {
     }, {
         key: 'showChart',
         value: function showChart() {
+            if (!this.props.dataSource || this.props.dataSource.length <= 0) {
+                return;
+            }
+
             var data = this.props.dataSource[this.state.activeIndex];
             this.option.xAxis.data = data.xAxis;
             this.option.series = data.series;
