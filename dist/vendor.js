@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "dist/demo";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 195);
+/******/ 	return __webpack_require__(__webpack_require__.s = 196);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -22263,7 +22263,8 @@ module.exports = ReactDOMInvalidARIAHook;
 /* 192 */,
 /* 193 */,
 /* 194 */,
-/* 195 */
+/* 195 */,
+/* 196 */
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(81);

@@ -100,6 +100,10 @@ class Chart extends React.Component {
     }
 
     showChart() {
+        if (!this.props.dataSource || this.props.dataSource.length <= 0) {
+            return;
+        }
+
         let data = this.props.dataSource[this.state.activeIndex];
         this.option.xAxis.data = data.xAxis;
         this.option.series = data.series;
