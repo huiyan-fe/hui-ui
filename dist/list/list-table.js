@@ -22885,6 +22885,8 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -22927,13 +22929,13 @@ var List = function (_React$Component) {
             if (isTh) {
                 return _react2.default.createElement(
                     'th',
-                    { key: 'th_' + Math.random(), style: style },
+                    _extends({ key: 'th_' + Math.random(), style: style }, td.attr),
                     tdDom
                 );
             } else {
                 return _react2.default.createElement(
                     'td',
-                    { key: 'td_' + Math.random(), style: style },
+                    _extends({ key: 'td_' + Math.random(), style: style }, td.attr),
                     tdDom
                 );
             }
@@ -22967,10 +22969,16 @@ var List = function (_React$Component) {
                 });
                 return _react2.default.createElement(
                     'tr',
-                    { style: BodyStyle, key: 'tableBody' + trindex },
+                    { style: BodyStyle, key: 'tableBody' + trindex, onClick: _this3.click.bind(_this3, trs, trindex) },
                     tds
                 );
             });
+        }
+    }, {
+        key: 'click',
+        value: function click(item, index) {
+            var clickEvt = this.props.dataSource && this.props.dataSource.body && this.props.dataSource.body.click;
+            clickEvt && clickEvt(item, index);
         }
     }, {
         key: 'render',

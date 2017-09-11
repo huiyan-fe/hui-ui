@@ -16,9 +16,9 @@ class List extends React.Component {
         }
 
         if (isTh) {
-            return <th key={`th_${Math.random()}`} style={style}>{tdDom}</th>;
+            return <th key={`th_${Math.random()}`} style={style} {...td.attr}>{tdDom}</th>;
         } else {
-            return <td key={`td_${Math.random()}`} style={style}>{tdDom}</td>;
+            return <td key={`td_${Math.random()}`} style={style}  {...td.attr}>{tdDom}</td>;
         }
 
     }
@@ -35,8 +35,13 @@ class List extends React.Component {
         const BodyStyle = this.props.dataSource && this.props.dataSource.body && this.props.dataSource.body.style || [];
         return BodyData.map((trs, trindex) => {
             const tds = trs.map(td => this.getTdContent(td));
-            return <tr style={BodyStyle} key={`tableBody${trindex}`}>{tds}</tr>;
+            return <tr style={BodyStyle} key={`tableBody${trindex}`} onClick={this.click.bind(this, trs, trindex)}>{tds}</tr>;
         })
+    }
+
+    click(item, index) {
+        const clickEvt = this.props.dataSource && this.props.dataSource.body && this.props.dataSource.body.click;
+        clickEvt && clickEvt(item, index);
     }
 
     render() {
