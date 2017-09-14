@@ -4,6 +4,9 @@ require('./list.scss');
 class List extends React.Component {
     constructor(args) {
         super(args);
+        this.state = {
+            activeIndex: null
+        }
     }
 
     getTdContent(td, isTh) {
@@ -33,20 +36,106 @@ class List extends React.Component {
     getTableList() {
         const BodyData = this.props.dataSource && this.props.dataSource.body && this.props.dataSource.body.data || [];
         const BodyStyle = this.props.dataSource && this.props.dataSource.body && this.props.dataSource.body.style || [];
+        const BodyActiveStyle = this.props.dataSource && this.props.dataSource.body && this.props.dataSource.body.activeStyle || [];
         return BodyData.map((trs, trindex) => {
             const tds = trs.map(td => this.getTdContent(td));
-            return <tr style={BodyStyle} key={`tableBody${trindex}`} onClick={this.click.bind(this, trs, trindex)}>{tds}</tr>;
+            const isActive = this.state.activeIndex === trindex;
+            let style = BodyStyle;
+            if (isActive) {
+                const oldStyle = JSON.parse(JSON.stringify(BodyStyle));
+                for (var i in BodyActiveStyle) {
+                    oldStyle[i] = BodyActiveStyle[i];
+                }
+                style = oldStyle;
+            }
+            return (
+                <tr
+                    className={isActive ? 'active' : ''}
+                    style={style} key={`tableBody${trindex}`}
+                    onClick={this.click.bind(this, trs, trindex)}
+                    onMouseEnter={this.onMouseEnter.bind(this, trs, trindex)}
+                    onMouseLeave={this.onMouseLeave.bind(this, trs, trindex)}
+                    onMouseOut={this.onMouseOut.bind(this, trs, trindex)}
+                    onMouseMove={this.onMouseMove.bind(this, trs, trindex)}
+                >
+                    {tds}
+                </tr>
+            );
         })
+    }
+
+    showTip(x, y, txt) {
+        if (!txt) {
+            return false;
+        }
+        if (!this.tipsDom) {
+            this.tipsDom = document.createElement('div');
+            this.tipsDom.className = 'hui-ui-tips';
+            document.body.appendChild(this.tipsDom);
+        }
+        this.tipsDom.innerText = txt;
+
+        // document.documentElement.clientWidth
+
+
+        this.tipsDom.style.display = 'block';
+        let left = x;
+        let top = y;
+        if (left + this.tipsDom.offsetWidth > document.documentElement.clientWidth) {
+            left = document.documentElement.clientWidth - this.tipsDom.offsetWidth - 10;
+        }
+        
+        this.tipsDom.style.left = left + 'px';
+        this.tipsDom.style.top = y + 'px';
+        console.log(this.tipsDom.offsetWidth)
+    }
+
+    hideTip() {
+        this.tipsDom && (this.tipsDom.style.display = 'none');
+    };
+
+    onMouseMove(item, index, e) {
+        const clickEvt = this.props.dataSource && this.props.dataSource.body && this.props.dataSource.body.mousemove;
+        clickEvt && clickEvt(item, index);
+        clearTimeout(this.tipsTimeout);
+
+        const x = e.pageX;
+        const y = e.pageY;
+        this.tipsTimeout = setTimeout(() => {
+            this.showTip(x + 10, y + 10, this.props.tips[index]);
+        }, 1000)
+    }
+
+    onMouseEnter(item, index) {
+        const clickEvt = this.props.dataSource && this.props.dataSource.body && this.props.dataSource.body.mouseenter;
+        clickEvt && clickEvt(item, index);
+        this.activeIndex = index;
+    }
+
+    onMouseLeave(item, index) {
+        const clickEvt = this.props.dataSource && this.props.dataSource.body && this.props.dataSource.body.mouseleave;
+        clickEvt && clickEvt(item, index);
+        this.activeIndex = null;
+        this.hideTip();
+        clearTimeout(this.tipsTimeout);
+    }
+
+    onMouseOut(item, index) {
+        const clickEvt = this.props.dataSource && this.props.dataSource.body && this.props.dataSource.body.mouseout;
+        clickEvt && clickEvt(item, index);
     }
 
     click(item, index) {
         const clickEvt = this.props.dataSource && this.props.dataSource.body && this.props.dataSource.body.click;
         clickEvt && clickEvt(item, index);
+        this.setState({
+            activeIndex: index
+        })
     }
 
     render() {
         const tableStyle = this.props.dataSource.style || {};
-        const defaultStyle = { width: '100%', borderCollapse: 'collapse' };
+        const defaultStyle = { width: '100%', borderCollapse: 'collapse', tableLayout: 'fixed' };
         Object.keys(tableStyle).forEach(key => {
             defaultStyle[key] = tableStyle[key];
         });

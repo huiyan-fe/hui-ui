@@ -22780,7 +22780,7 @@ exports = module.exports = __webpack_require__(183)(undefined);
 
 
 // module
-exports.push([module.i, ".hui-list,\n.hui-list li {\n  list-style: none;\n  list-style-image: none;\n  margin: 0;\n  padding: 0; }\n\n.hui-list li {\n  border-bottom: 1px solid #eaeaea;\n  color: #666; }\n  .hui-list li:hover {\n    background: #f4f4f4;\n    cursor: pointer; }\n", ""]);
+exports.push([module.i, ".hui-list,\n.hui-list li {\n  list-style: none;\n  list-style-image: none;\n  margin: 0;\n  padding: 0; }\n\n.hui-list li {\n  border-bottom: 1px solid #eaeaea;\n  color: #666; }\n  .hui-list li:hover {\n    background: #f4f4f4;\n    cursor: pointer; }\n\n.hui-ui-tips {\n  position: absolute;\n  top: -999;\n  left: -999;\n  display: none;\n  z-index: 100000;\n  pointer-events: none;\n  white-space: nowrap;\n  font-size: 12px;\n  color: #fff;\n  padding: 10px;\n  border-radius: 4px;\n  background: rgba(28, 28, 28, 0.9); }\n", ""]);
 
 // exports
 
@@ -22907,7 +22907,12 @@ var List = function (_React$Component) {
     function List(args) {
         _classCallCheck(this, List);
 
-        return _possibleConstructorReturn(this, (List.__proto__ || Object.getPrototypeOf(List)).call(this, args));
+        var _this = _possibleConstructorReturn(this, (List.__proto__ || Object.getPrototypeOf(List)).call(this, args));
+
+        _this.state = {
+            activeIndex: null
+        };
+        return _this;
     }
 
     _createClass(List, [{
@@ -22958,28 +22963,118 @@ var List = function (_React$Component) {
 
             var BodyData = this.props.dataSource && this.props.dataSource.body && this.props.dataSource.body.data || [];
             var BodyStyle = this.props.dataSource && this.props.dataSource.body && this.props.dataSource.body.style || [];
+            var BodyActiveStyle = this.props.dataSource && this.props.dataSource.body && this.props.dataSource.body.activeStyle || [];
             return BodyData.map(function (trs, trindex) {
                 var tds = trs.map(function (td) {
                     return _this3.getTdContent(td);
                 });
+                var isActive = _this3.state.activeIndex === trindex;
+                var style = BodyStyle;
+                if (isActive) {
+                    var oldStyle = JSON.parse(JSON.stringify(BodyStyle));
+                    for (var i in BodyActiveStyle) {
+                        oldStyle[i] = BodyActiveStyle[i];
+                    }
+                    style = oldStyle;
+                }
                 return _react2.default.createElement(
                     'tr',
-                    { style: BodyStyle, key: 'tableBody' + trindex, onClick: _this3.click.bind(_this3, trs, trindex) },
+                    {
+                        className: isActive ? 'active' : '',
+                        style: style, key: 'tableBody' + trindex,
+                        onClick: _this3.click.bind(_this3, trs, trindex),
+                        onMouseEnter: _this3.onMouseEnter.bind(_this3, trs, trindex),
+                        onMouseLeave: _this3.onMouseLeave.bind(_this3, trs, trindex),
+                        onMouseOut: _this3.onMouseOut.bind(_this3, trs, trindex),
+                        onMouseMove: _this3.onMouseMove.bind(_this3, trs, trindex)
+                    },
                     tds
                 );
             });
+        }
+    }, {
+        key: 'showTip',
+        value: function showTip(x, y, txt) {
+            if (!txt) {
+                return false;
+            }
+            if (!this.tipsDom) {
+                this.tipsDom = document.createElement('div');
+                this.tipsDom.className = 'hui-ui-tips';
+                document.body.appendChild(this.tipsDom);
+            }
+            this.tipsDom.innerText = txt;
+
+            // document.documentElement.clientWidth
+
+
+            this.tipsDom.style.display = 'block';
+            var left = x;
+            var top = y;
+            if (left + this.tipsDom.offsetWidth > document.documentElement.clientWidth) {
+                left = document.documentElement.clientWidth - this.tipsDom.offsetWidth - 10;
+            }
+
+            this.tipsDom.style.left = left + 'px';
+            this.tipsDom.style.top = y + 'px';
+            console.log(this.tipsDom.offsetWidth);
+        }
+    }, {
+        key: 'hideTip',
+        value: function hideTip() {
+            this.tipsDom && (this.tipsDom.style.display = 'none');
+        }
+    }, {
+        key: 'onMouseMove',
+        value: function onMouseMove(item, index, e) {
+            var _this4 = this;
+
+            var clickEvt = this.props.dataSource && this.props.dataSource.body && this.props.dataSource.body.mousemove;
+            clickEvt && clickEvt(item, index);
+            clearTimeout(this.tipsTimeout);
+
+            var x = e.pageX;
+            var y = e.pageY;
+            this.tipsTimeout = setTimeout(function () {
+                _this4.showTip(x + 10, y + 10, _this4.props.tips[index]);
+            }, 1000);
+        }
+    }, {
+        key: 'onMouseEnter',
+        value: function onMouseEnter(item, index) {
+            var clickEvt = this.props.dataSource && this.props.dataSource.body && this.props.dataSource.body.mouseenter;
+            clickEvt && clickEvt(item, index);
+            this.activeIndex = index;
+        }
+    }, {
+        key: 'onMouseLeave',
+        value: function onMouseLeave(item, index) {
+            var clickEvt = this.props.dataSource && this.props.dataSource.body && this.props.dataSource.body.mouseleave;
+            clickEvt && clickEvt(item, index);
+            this.activeIndex = null;
+            this.hideTip();
+            clearTimeout(this.tipsTimeout);
+        }
+    }, {
+        key: 'onMouseOut',
+        value: function onMouseOut(item, index) {
+            var clickEvt = this.props.dataSource && this.props.dataSource.body && this.props.dataSource.body.mouseout;
+            clickEvt && clickEvt(item, index);
         }
     }, {
         key: 'click',
         value: function click(item, index) {
             var clickEvt = this.props.dataSource && this.props.dataSource.body && this.props.dataSource.body.click;
             clickEvt && clickEvt(item, index);
+            this.setState({
+                activeIndex: index
+            });
         }
     }, {
         key: 'render',
         value: function render() {
             var tableStyle = this.props.dataSource.style || {};
-            var defaultStyle = { width: '100%', borderCollapse: 'collapse' };
+            var defaultStyle = { width: '100%', borderCollapse: 'collapse', tableLayout: 'fixed' };
             Object.keys(tableStyle).forEach(function (key) {
                 defaultStyle[key] = tableStyle[key];
             });

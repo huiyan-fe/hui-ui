@@ -17,3 +17,18 @@
         }
     }
 }
+
+.hui-ui-tips {
+    position: absolute;
+    top: -999;
+    left: -999;
+    display: none;
+    z-index: 100000;
+    pointer-events: none;
+    white-space: nowrap;
+    font-size: 12px;
+    color: #fff;
+    padding: 10px;
+    border-radius: 4px;
+    background: rgba(28, 28, 28, 0.9);
+}

@@ -11,6 +11,7 @@ module.exports = {
         'list/list': './src/list/list.jsx',
         'list/list-table': './src/list/list-table.jsx',
         'chart/chart': './src/chart/chart.jsx',
+        'option/option': './src/option/option.jsx',
         vendor: ['react', 'react-dom']
     },
     output: {
