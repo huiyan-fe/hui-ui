@@ -5,7 +5,7 @@ class List extends React.Component {
     constructor(args) {
         super(args);
         this.state = {
-            activeIndex: null
+            activeIndex: this.props.activeIndex || null
         }
     }
 
@@ -37,9 +37,10 @@ class List extends React.Component {
         const BodyData = this.props.dataSource && this.props.dataSource.body && this.props.dataSource.body.data || [];
         const BodyStyle = this.props.dataSource && this.props.dataSource.body && this.props.dataSource.body.style || [];
         const BodyActiveStyle = this.props.dataSource && this.props.dataSource.body && this.props.dataSource.body.activeStyle || [];
+        const BodyListClass = this.props.dataSource && this.props.dataSource.body && this.props.dataSource.body.className || '';
         return BodyData.map((trs, trindex) => {
             const tds = trs.map(td => this.getTdContent(td));
-            const isActive = this.state.activeIndex === trindex;
+            const isActive = (this.props.activeIndex === undefined ? this.state.activeIndex : this.props.activeIndex) === trindex;
             let style = BodyStyle;
             if (isActive) {
                 const oldStyle = JSON.parse(JSON.stringify(BodyStyle));
@@ -50,7 +51,7 @@ class List extends React.Component {
             }
             return (
                 <tr
-                    className={isActive ? 'active' : ''}
+                    className={`${isActive ? 'active' : ''} ${BodyListClass}`}
                     style={style} key={`tableBody${trindex}`}
                     onClick={this.click.bind(this, trs, trindex)}
                     onMouseEnter={this.onMouseEnter.bind(this, trs, trindex)}
@@ -84,7 +85,7 @@ class List extends React.Component {
         if (left + this.tipsDom.offsetWidth > document.documentElement.clientWidth) {
             left = document.documentElement.clientWidth - this.tipsDom.offsetWidth - 10;
         }
-        
+
         this.tipsDom.style.left = left + 'px';
         this.tipsDom.style.top = y + 'px';
         console.log(this.tipsDom.offsetWidth)
@@ -129,7 +130,7 @@ class List extends React.Component {
         const clickEvt = this.props.dataSource && this.props.dataSource.body && this.props.dataSource.body.click;
         clickEvt && clickEvt(item, index);
         this.setState({
-            activeIndex: index
+            activeIndex: this.props.activeIndex || index
         })
     }
 
