@@ -1,0 +1,38 @@
+.hui-list {
+    &,
+    & li {
+        list-style: none;
+        list-style-image: none;
+        margin: 0;
+        padding: 0;
+    }
+    li {
+        // padding: 10px;
+        border-bottom: 1px solid #eaeaea;
+        // border-top: 1px solid #ffffff;
+        color: #666;
+        &:hover {
+            background: #f4f4f4;
+            cursor: pointer;
+        }
+    }
+}
+
+.hui-ui-tips {
+    position: absolute;
+    top: -999;
+    left: -999;
+    display: none;
+    z-index: 100000;
+    pointer-events: none;
+    white-space: nowrap;
+    font-size: 12px;
+    color: #fff;
+    padding: 10px;
+    border-radius: 4px;
+    background: rgba(28, 28, 28, 0.9);
+}
+
+.list-rank-icon-trans {
+    vertical-align: middle;
+}

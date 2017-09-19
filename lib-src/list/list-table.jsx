@@ -70,9 +70,15 @@ class List extends React.Component {
             return false;
         }
         if (!this.tipsDom) {
-            this.tipsDom = document.createElement('div');
-            this.tipsDom.className = 'hui-ui-tips';
-            document.body.appendChild(this.tipsDom);
+            let tips = document.querySelector('.hui-ui-tips');
+            if (tips) {
+                this.tipsDom = tips;
+            } else {
+                this.tipsDom = document.createElement('div');
+                this.tipsDom.className = 'hui-ui-tips';
+                document.body.appendChild(this.tipsDom);
+            }
+
         }
         this.tipsDom.innerText = txt;
 
@@ -88,7 +94,7 @@ class List extends React.Component {
 
         this.tipsDom.style.left = left + 'px';
         this.tipsDom.style.top = y + 'px';
-        console.log(this.tipsDom.offsetWidth)
+        // console.log(this.tipsDom.offsetWidth)
     }
 
     hideTip() {

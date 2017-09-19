@@ -1,0 +1,84 @@
+.hui-chart {
+    border: 1px solid #597694;
+    background: #fff;
+    position: relative;
+    .hui-chart-title {
+        height: 30px;
+        line-height: 30px;
+        color: #333;
+        background-color: #f6f8f8;
+        border-bottom: 1px solid #edf1f2;
+    }
+    .hui-chart-panel-unfold {
+    	position: absolute;
+    	top: -22px;
+    	left: 50%;
+    	margin-left: -30px; 
+    	width: 60px;
+    	height: 20px;
+    	background-color: #fff;
+    	border: solid 1px #e8e8e8;
+    	cursor: pointer;
+    	background-color: rgba(255,255,255,.9);
+    	text-align: center;
+    	svg {
+			height: 20px;
+    		width: 100%;
+            transform: rotate(180deg);
+    	}
+    }
+    &.fold .hui-chart-panel-unfold svg{
+        transform: rotate(0deg);
+    }
+    .hui-chart-btn {
+        background: white;
+        cursor: pointer;
+        padding: 0 20px;
+        text-align: center;
+        border-top: 0;
+        border-bottom: 0;
+        height: 100%;
+        line-height: 30px;
+        float: left;
+        font-size: 12px;
+        border-right: 1px solid #e0e0e0;
+        &.active {
+            background: #404c5a;
+            color: white;
+        }
+    }
+    .hui-chart-close {
+        float: right;
+        height: 20px;
+        line-height: 30px;
+        fill: #666;
+        padding: 5px 0px;
+        cursor: pointer;
+        color: #666;
+        &:hover {
+            fill: #fff;
+            background: #404c5a;
+        }
+    }
+
+    &.theme-radio {
+        border: 1px solid #cacaca;
+        .hui-chart-title {
+            background: none;
+            border-bottom: 1px solid #cacaca;
+            height: 40px;
+            line-height: 40px;
+        }
+        .hui-chart-btn {
+            background: #ebeff6;
+            line-height: 40px;
+            color: #666;
+            border-bottom: 1px solid #cacaca;
+            &.active {
+                background: #fff;
+                color: #333;
+                border-bottom-color: #fff;
+            }
+        }
+    }
+}

@@ -41,6 +41,27 @@ class List extends React.Component {
         });
     }
 
+    componentDidMount() {
+        this.clickEvt = this.click.bind(this);
+        window.addEventListener('click', this.clickEvt);
+    }
+    componentWillUnmount() {
+        window.removeEventListener('click', this.clickEvt);
+    }
+
+    click(e) {
+        let target = e.target;
+        while (target) {
+            if (target === this.popDom || target === this.popHandleDom) {
+                return false;
+            }
+            target = target.parentElement;
+        }
+        this.setState({
+            ctiyBoxShow: false
+        });
+    }
+
     render() {
         // listShow
         const listStyle = JSON.parse(JSON.stringify(this.props.listStyle || {}));
@@ -48,7 +69,7 @@ class List extends React.Component {
         const shadowStyle = JSON.parse(JSON.stringify(listStyle));
         shadowStyle.display = 'block';
         return (
-            <div className="hui-option" style={this.props.style || {}}>
+            <div className={`${this.props.className} hui-option`} style={this.props.style || {}} ref={e => this.popDom = e}>
                 <div className="hui-option-box"
                     onClick={this.toggleList.bind(this)}
                     style={this.props.boxStyle || {}}>
@@ -62,7 +83,7 @@ class List extends React.Component {
                 </div>
                 <ul className="hui-option-list" style={listStyle}>{this.getList()}</ul>
                 <ul className="hui-option-list-shadow" style={shadowStyle}>{this.getList()}</ul>
-            </div>
+            </div >
         )
     }
 }
