@@ -1,0 +1,70 @@
+.hui-option {
+    display: inline-block;
+}
+
+.hui-option-tips {
+    margin-right: 10px;
+    height: 22px;
+    line-height: 1em;
+    overflow: hidden;
+    display: inline-block;
+}
+
+.hui-option-box {
+    position: relative;
+    cursor: pointer;
+    height: 22px;
+    line-height: 22px;
+    // span {
+    //     vertical-align: middle;
+    //     display: inline-block;
+    // }
+    border: 1px solid #ccc;
+    padding: 3px 5px;
+    border-radius: 4px;
+    svg {
+        position: absolute;
+        top: 50%;
+        right: 5px;
+        width: 18px;
+        height: 18px;
+        margin: -9px 0 0 -9px;
+        fill: none;
+        stroke: #000;
+        stroke-width: 2px;
+    }
+}
+
+.hui-option-list {
+    max-height: 200px;
+    overflow: auto;
+}
+
+.hui-option-list,
+.hui-option-list-shadow {
+    border: 1px solid #ccc;
+    overflow: auto;
+    position: absolute;
+    &,
+    li {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        cursor: pointer;
+    }
+    li {
+        padding: 2px 25px 2px 10px;
+        cursor: pointer;
+    }
+    background: white;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    z-index: 10000;
+}
+
+.hui-option-list-shadow {
+    position: relative;
+    height: 0px;
+    overflow: hidden;
+    visibility: hidden;
+}

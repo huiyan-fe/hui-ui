@@ -41,7 +41,7 @@ class ChartDemo extends React.Component {
         ];
         return (
             <div>
-                <Chart dataSource={dataSource} theme="radio"/>
+                <Chart isShowFold={true} hideCloseBtn={false} dataSource={dataSource} theme="radio"/>
             </div>
         );
     }
