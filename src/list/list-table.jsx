@@ -1,4 +1,4 @@
-import ListTable from '../../lib/list/list-table.jsx';
+import ListTable from '../../lib-src/list/list-table.jsx';
 // import List from 'hui-ui/lib/list/list-table.jsx';
 
 import React from 'react';

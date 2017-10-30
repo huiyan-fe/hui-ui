@@ -1,14 +1,3 @@
 {
     "presets": ["env", "react"]
-        // "presets": ["react"]
-        // "plugins": [
-        //     [
-        //         // "external-helpers",
-        //         "import",
-        //         {
-        //             // "libraryName": "antd",
-        //             // "style": true 
-        //         } 
-        //     ]
-        // ]
 }

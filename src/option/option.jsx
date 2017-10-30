@@ -1,4 +1,4 @@
-import Option from '../../lib/option/option.jsx';
+import Option from '../../lib-src/option/option.jsx';
 // import Option from 'hui-ui/lib/Option/Option.jsx';
 
 const React = require('react');
