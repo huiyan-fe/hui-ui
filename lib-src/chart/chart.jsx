@@ -1,5 +1,6 @@
 import React from 'react';
 require('./chart.scss');
+// require('./list.scss');
 
 class UnfoldIcon extends React.Component {
     render() {

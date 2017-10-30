@@ -1,4 +1,4 @@
-import Option from '../../lib-src/option/option.jsx';
+import Option from '../../lib/option/option.js';
 // import Option from 'hui-ui/lib/Option/Option.jsx';
 
 const React = require('react');
@@ -6,6 +6,7 @@ const ReactDOM = require('react-dom');
 
 class OptionDemo extends React.Component {
     render() {
+        console.log('xxxxx')
         let dataSource = [{
             value: '123',
             text: 'adfafdas'
