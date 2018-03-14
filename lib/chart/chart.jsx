@@ -13,7 +13,7 @@ class Chart extends React.Component {
     constructor(args) {
         super(args);
 
-        this.option = {
+        this.option = this.props.option || {
             tooltip: {
                 trigger: 'axis'
             },
