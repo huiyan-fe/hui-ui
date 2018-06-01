@@ -39,9 +39,24 @@ class ChartDemo extends React.Component {
                 ]
             }
         ];
+        var option = {
+            toolbox: {
+                show: true,
+                feature: {
+                    dataZoom: {
+                        yAxisIndex: 'none'
+                    },
+                    dataView: { readOnly: false },
+                    magicType: { type: ['line', 'bar'] },
+                    restore: {},
+                    saveAsImage: {}
+                }
+            }
+        }
+
         return (
             <div>
-                <Chart isShowFold={true} hideCloseBtn={false} dataSource={dataSource} theme="radio"/>
+                <Chart isShowFold={true} hideCloseBtn={false} dataSource={dataSource} optionSettings={option} theme="radio" />
             </div>
         );
     }

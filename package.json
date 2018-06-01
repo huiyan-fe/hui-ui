@@ -1,11 +1,11 @@
 {
     "name": "hui-ui",
-    "version": "0.0.31",
+    "version": "0.0.32",
     "description": "hui-ui",
     "main": "index.js",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
-        "dev": "webpack",
+        "dev": "npm run pub && webpack",
         "pub": "babel lib-src -d lib"
     },
     "repository": {

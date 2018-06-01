@@ -22492,10 +22492,25 @@ var ChartDemo = function (_React$Component) {
                     data: [1, -2, 2, 5, 3, 2, 0]
                 }]
             }];
+            var option = {
+                toolbox: {
+                    show: true,
+                    feature: {
+                        dataZoom: {
+                            yAxisIndex: 'none'
+                        },
+                        dataView: { readOnly: false },
+                        magicType: { type: ['line', 'bar'] },
+                        restore: {},
+                        saveAsImage: {}
+                    }
+                }
+            };
+
             return React.createElement(
                 'div',
                 null,
-                React.createElement(_chart2.default, { isShowFold: true, hideCloseBtn: false, dataSource: dataSource, theme: 'radio' })
+                React.createElement(_chart2.default, { isShowFold: true, hideCloseBtn: false, dataSource: dataSource, optionSettings: option, theme: 'radio' })
             );
         }
     }]);
@@ -22512,11 +22527,17 @@ ReactDOM.render(React.createElement(ChartDemo, null), document.getElementById('c
 "use strict";
 
 
-var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+var _typeof2 = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
+
+var _typeof = typeof Symbol === "function" && _typeof2(Symbol.iterator) === "symbol" ? function (obj) {
+    return typeof obj === "undefined" ? "undefined" : _typeof2(obj);
+} : function (obj) {
+    return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj === "undefined" ? "undefined" : _typeof2(obj);
+};
 
 var _createClass = function () {
     function defineProperties(target, props) {
@@ -22545,12 +22566,12 @@ function _classCallCheck(instance, Constructor) {
 function _possibleConstructorReturn(self, call) {
     if (!self) {
         throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
-    }return call && ((typeof call === "undefined" ? "undefined" : _typeof(call)) === "object" || typeof call === "function") ? call : self;
+    }return call && ((typeof call === "undefined" ? "undefined" : _typeof2(call)) === "object" || typeof call === "function") ? call : self;
 }
 
 function _inherits(subClass, superClass) {
     if (typeof superClass !== "function" && superClass !== null) {
-        throw new TypeError("Super expression must either be null or a function, not " + (typeof superClass === "undefined" ? "undefined" : _typeof(superClass)));
+        throw new TypeError("Super expression must either be null or a function, not " + (typeof superClass === "undefined" ? "undefined" : _typeof2(superClass)));
     }subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } });if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
 }
 
@@ -22666,15 +22687,17 @@ var Chart = function (_React$Component2) {
         key: 'showChart',
         value: function showChart() {
             var data = this.props.dataSource[this.state.activeIndex];
-            this.option.xAxis.data = data.xAxis;
-            this.option.series = data.series;
+            var option = this.extend(this.option, this.props.optionSettings);
+            console.log('option', option, this.props.optionSettings);
+            option.xAxis.data = data.xAxis;
+            option.series = data.series;
             if (this.props.theme === 'radio') {
-                this.option.series[0].itemStyle = {
+                option.series[0].itemStyle = {
                     normal: {
                         color: '#5c89e7'
                     }
                 };
-                this.option.series[0].areaStyle = {
+                option.series[0].areaStyle = {
                     normal: {
                         color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
                             offset: 0,
@@ -22687,7 +22710,26 @@ var Chart = function (_React$Component2) {
                 };
             }
             this.charts.clear();
-            this.charts.setOption(this.option);
+            this.charts.setOption(option);
+        }
+    }, {
+        key: 'extend',
+        value: function extend(tar, source) {
+            var merge = function merge(origin, modifys) {
+                for (var k in modifys) {
+                    if (_typeof(modifys[k]) == 'object') {
+                        if (_typeof(origin[k]) !== 'object') {
+                            origin[k] = {};
+                        }
+                        merge(origin[k], modifys[k]);
+                    } else {
+                        origin[k] = modifys[k];
+                    }
+                }
+            };
+            var cp = JSON.parse(JSON.stringify(tar));
+            merge(cp, source);
+            return cp;
         }
     }, {
         key: 'getTitleBtn',
