@@ -90,8 +90,19 @@ class Chart extends React.Component {
         this.charts = echarts.init(this.doms.chart);
         this.showChart();
     }
+    
+    componentWillReceiveProps(nextProps) {
+        if (this.props.isFold !== nextProps.isFold) {
+            this.setState({
+                isFold: nextProps.isFold
+            });
+        }
+    }
 
     showChart() {
+        if (!this.props.dataSource || this.props.dataSource.length <= 0) {
+            return;
+        }
         let data = this.props.dataSource[this.state.activeIndex];
         this.option.xAxis.data = data.xAxis;
         this.option.series = data.series;
@@ -148,9 +159,11 @@ class Chart extends React.Component {
     }
 
     handleToggleFold() {
+        var isFold = !this.state.isFold;
         this.setState({
             isFold: !this.state.isFold
         });
+        this.props.onFoldChange && this.props.onFoldChange(isFold);
     }
 
     render() {
