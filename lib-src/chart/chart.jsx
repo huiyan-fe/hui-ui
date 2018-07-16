@@ -96,6 +96,7 @@ class Chart extends React.Component {
         let option = this.extend(this.option, this.props.optionSettings);
         option.xAxis.data = data.xAxis;
         option.series = data.series;
+        option.legend = data.legend;
         if (this.props.theme === 'radio') {
             option.series[0].itemStyle = {
                 normal: {
