@@ -41,6 +41,26 @@ class List extends React.Component {
         });
     }
 
+    componentWillReceiveProps(nextProps) {
+        if (JSON.stringify(this.props.dataSource) !== JSON.stringify(nextProps.dataSource)) {
+            const list = nextProps.dataSource;
+            const defaultValue = nextProps.defaultValue || '';
+
+            let value = '';
+            list.forEach(item => {
+                if (item.value === defaultValue) {
+                    value = item
+                }
+            });
+            if (!value) value = list[0];
+            this.setState({
+                list,
+                value,
+                listShow: false
+            });
+        }
+    }
+
     componentDidMount() {
         this.clickEvt = this.click.bind(this);
         window.addEventListener('click', this.clickEvt);
